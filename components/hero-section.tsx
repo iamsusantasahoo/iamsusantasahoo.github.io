@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Github, Linkedin, Mail, Phone, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { emailAddress, githubUrl, linkedinUrl, phoneNumber } from "@/lib/profile";
+import { emailAddress, githubUrl, linkedinUrl, phoneNumber, resumeUrl } from "@/lib/profile";
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,19 @@ export function HeroSection() {
   const scrollToAbout = () => {
     const element = document.getElementById("about");
     element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeClick = () => {
+    // Trigger download
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = "Susanta_Kumar_Sahoo_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    // Open view link in new tab (use view URL so it displays in browser)
+    const viewUrl = `https://drive.google.com/file/d/1e3FUpKXzDR7wrnTAaNdFpDNULr7sEFXu/view`;
+    window.open(viewUrl, "_blank");
   };
 
   return (
@@ -133,7 +146,7 @@ export function HeroSection() {
             className="rounded-full w-12 h-12 border-border/50 hover:border-primary hover:bg-primary/10 transition-all duration-300 group bg-transparent"
             asChild
           >
-            <a href={"mailto:"+emailAddress} aria-label="Email">
+            <a href={"mailto:" + emailAddress} aria-label="Email">
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
           </Button>
@@ -144,7 +157,7 @@ export function HeroSection() {
             className="rounded-full w-12 h-12 border-border/50 hover:border-primary hover:bg-primary/10 transition-all duration-300 group bg-transparent"
             asChild
           >
-            <a href={"tel:"+phoneNumber} aria-label="Phone">
+            <a href={"tel:" + phoneNumber} aria-label="Phone">
               <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
           </Button>
@@ -153,21 +166,22 @@ export function HeroSection() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-14 duration-700 delay-700">
           <Button
-            size="lg"
-            className="rounded-full px-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-primary/40 hover:scale-105"
-            asChild
-          >
-            <a href="#contact">Get in Touch</a>
-          </Button>
-
-          <Button
             variant="outline"
             size="lg"
             className="rounded-full px-8 border-border/50 hover:border-primary hover:bg-primary/5 transition-all duration-300 bg-transparent"
-            asChild
-          >
-            <a href="#projects">View Projects</a>
+            asChild>
+            <a href="#contact">Get in Touch</a>
+
           </Button>
+          <Button
+            size="lg"
+            className="rounded-full px-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-primary/40 hover:scale-105"
+            onClick={handleResumeClick}
+          >
+            Resume
+            <Download />
+          </Button>
+
         </div>
       </div>
 

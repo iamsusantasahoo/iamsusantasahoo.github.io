@@ -35,7 +35,7 @@ const contactMethods = [
   {
     icon: Github,
     label: "GitHub",
-    value: "susanta-9078",
+    value: githubUrl.split("/").pop(),
     href: githubUrl,
     action: "View profile",
     external: true,
