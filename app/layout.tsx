@@ -70,6 +70,9 @@ export const metadata: Metadata = {
     apple: '/favicon.ico',
   },
   manifest: '/manifest.webmanifest',
+  verification: {
+    google: '_CZoGd-TXcpTj3j1uW42PlFXxixx7CoTSj2L1XzNqQk',
+  },
 }
 
 export const viewport: Viewport = {
