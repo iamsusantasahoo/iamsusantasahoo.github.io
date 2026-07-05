@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://iamsusantasahoo.github.io
+Sitemap: https://iamsusantasahoo.github.io/sitemap.xml
