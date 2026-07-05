@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Github, Linkedin, Mail, Phone, ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { emailAddress, githubUrl, linkedinUrl, phoneNumber, resumeUrl } from "@/lib/profile";
+import { emailAddress, githubUrl, linkedinUrl, phoneNumber, resumeUrl, resumeViewUrl } from "@/lib/profile";
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,8 +48,7 @@ export function HeroSection() {
     link.click();
     document.body.removeChild(link);
     // Open view link in new tab (use view URL so it displays in browser)
-    const viewUrl = `https://drive.google.com/file/d/1e3FUpKXzDR7wrnTAaNdFpDNULr7sEFXu/view`;
-    window.open(viewUrl, "_blank");
+    window.open(resumeViewUrl, "_blank");
   };
 
   return (
